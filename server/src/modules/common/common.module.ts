@@ -1,6 +1,7 @@
 import { DynamicModule, Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerModule, PinoLogger } from 'nestjs-pino';
+
 import { loggerConfig } from 'src/configs/logger.config';
 import { getDataSourceConfig } from 'src/database/ormconfig';
 
