@@ -102,7 +102,7 @@
     "no-multiple-empty-lines": ["error", { "max": 1 }],
     "no-multi-spaces": "error",
     "no-console": "error",
-    // "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/no-misused-promises": "error",
     "no-return-await": "off",
     "no-await-in-loop": "warn",
