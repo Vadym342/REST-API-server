@@ -17,14 +17,31 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migration:create": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:create",
+    "seed:create": "typeorm-ts-node-commonjs migration:create",
+    "seed:run": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js -d ./src/database/seeds.datasource.ts migration:run",
+    "seed:revert": "ts-node -r tsconfig-paths/register src/database/seeds.revert.ts",
+    "db:schema:create": "ts-node -r tsconfig-paths/register ./scripts/db/createDBSchema.ts",
+    "migration:rollback:latest": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js -d ./src/database/migrations.datasource.ts migration:revert",
+    "migration:run:latest": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js -d ./src/database/migrations.datasource.ts migration:run",
+    "migration:rollback": "node node_modules/typeorm/cli.js migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
+    "@nestjs/config": "^3.1.1",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/typeorm": "^10.0.0",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "pg": "^8.11.3",
+    "nestjs-pino": "^4.0.0",
+    "typeorm": "^0.3.19",
+    "dotenv": "^16.3.1",
+    "pino-http": "^9.0.0",
+    "pino-pretty": "^10.3.1",
+    "rxjs": "^7.8.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
