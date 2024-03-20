@@ -1,5 +1,4 @@
-
-import { NestFactory} from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { config } from 'dotenv';
 import { Logger } from 'nestjs-pino';
@@ -16,5 +15,5 @@ async function bootstrap(): Promise<void> {
 
   await app.listen(Number(process.env.APPLICATION_PORT) || 3030);
 }
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
+
 bootstrap();
