@@ -2,10 +2,10 @@ import { applyDecorators } from '@nestjs/common';
 import { ApiBearerAuth, ApiExtraModels, ApiOkResponse, ApiOperation, getSchemaPath } from '@nestjs/swagger';
 
 import { API_BEARER_AUTH_TYPE } from '@src/constants/swagger';
-
-import { PositionResponse } from './get-position-list-documentation.decorator';
 import { ApiThrowExceptions } from '@src/decorators/throw-exceptions.decorator';
 import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
+
+import { PositionResponse } from './get-position-list-documentation.decorator';
 
 const { POSITION_ID_IS_NOT_INT, POSITION_ENTITY_NOT_FOUND } = VALIDATION_ERROR_CONTEXT;
 

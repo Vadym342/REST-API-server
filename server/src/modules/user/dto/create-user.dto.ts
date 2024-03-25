@@ -1,7 +1,7 @@
+import { Transform } from 'class-transformer';
 import { IsEmail, IsInt, IsString, MaxLength, MinLength } from 'class-validator';
 
 import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
-import { Transform } from 'class-transformer';
 
 export class CreateUserDto {
   @IsEmail()
