@@ -1,9 +1,10 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiBody, ApiCreatedResponse, ApiOperation } from '@nestjs/swagger';
 
-import { CreatePositionDto } from '../dto/create-position.dto';
 import { ApiThrowExceptions } from '@src/decorators/throw-exceptions.decorator';
 import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
+
+import { CreatePositionDto } from '../dto/create-position.dto';
 
 const { POSITION_NAME_IS_NOT_STRING, POSITION_NAME_LENGTH_INVALID, POSITION_ENTITY_ALREADY_EXIST } = VALIDATION_ERROR_CONTEXT;
 

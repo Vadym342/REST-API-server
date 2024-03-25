@@ -1,4 +1,3 @@
-import { Position } from '@modules/position/entities/position.entity';
 import {
   Column,
   CreateDateColumn,
@@ -9,6 +8,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
+import { Position } from '@modules/position/entities/position.entity';
 
 @Entity({
   name: 'users',

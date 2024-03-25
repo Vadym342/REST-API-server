@@ -1,5 +1,6 @@
-import { User } from '@modules/user/entities/user.entity';
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+
+import { User } from '@modules/user/entities/user.entity';
 
 @Entity({
   name: 'positions',

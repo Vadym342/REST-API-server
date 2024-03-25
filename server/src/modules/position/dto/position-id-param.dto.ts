@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
 import { IsInt } from 'class-validator';
+
+import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
 
 export class PositionIdDto {
   @ApiProperty({

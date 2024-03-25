@@ -26,6 +26,8 @@ import { Observable } from 'rxjs';
 import { PHOTO_IMPORT_MAX_FILE_SIZE_BYTES } from '@src/constants/constants';
 import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
 
+import { PositionValidatorService } from '@modules/position/services/position-validator.service';
+
 import { CreateUserDto } from './dto/create-user.dto';
 import { GetUserResponseType } from './dto/get-one-user.response.dto';
 import { GetUserListResponseDto } from './dto/get-user-list.response.dto';
@@ -41,7 +43,6 @@ import { GetUserAPIDocumentation } from './swagger/get-one-user-documentation.de
 import { GetUserListAPIDocumentation } from './swagger/get-user-list-documentation.decorator';
 import { PostUserAPIDocumentation } from './swagger/post-user-documentation.decorator';
 import { UpdateUserAPIDocumentation } from './swagger/update-user-documentation.decorator';
-import { PositionValidatorService } from '@modules/position/services/position-validator.service';
 
 @ApiTags('User')
 @Controller('user')
