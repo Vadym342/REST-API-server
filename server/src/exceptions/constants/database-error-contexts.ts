@@ -43,15 +43,15 @@ export const DATABASE_ERROR_CONTEXT = {
     message: 'Select one Position entity exception',
   },
   POSITION_GET_MANY: {
-    errorCode: 20204,
+    errorCode: 20203,
     message: 'Select many Position entities exception',
   },
   POSITION_UPDATE_ONE: {
-    errorCode: 20205,
+    errorCode: 20204,
     message: 'Update Position entity exception',
   },
   POSITION_DELETE_ONE: {
-    errorCode: 20206,
+    errorCode: 20205,
     message: 'Delete Position entity exception',
   },
 };
