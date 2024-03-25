@@ -19,5 +19,5 @@ export const getDataSourceConfig = (logger?: PinoLogger): DataSourceOptions => (
   entities: [path.join(__dirname, '..', 'modules', '**', '*.entity{.ts,.js}')],
   migrations: [path.join(__dirname, '..', 'migrations', '*{.ts,.js}')],
   migrationsTableName: 'migrations',
-  // synchronize: true, //! Migrations
+  //synchronize: true, //! Migrations
 });

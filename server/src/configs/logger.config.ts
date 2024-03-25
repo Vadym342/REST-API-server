@@ -24,7 +24,7 @@ export const loggerConfig: Params = {
           params: req.params,
           query: req.query,
           headers: {
-            customerid: req.headers.customerid,
+            userId: req.headers.userId,
             authorization: req.headers.authorization,
             accept: req.headers.accept,
           },
