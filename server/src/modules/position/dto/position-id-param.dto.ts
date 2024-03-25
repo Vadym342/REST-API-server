@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
 import { IsInt } from 'class-validator';
 
 export class PositionIdDto {
@@ -9,6 +10,6 @@ export class PositionIdDto {
     example: '1',
     description: 'Position Id',
   })
-  @IsInt()
+  @IsInt({ context: VALIDATION_ERROR_CONTEXT.POSITION_ID_IS_NOT_INT })
   id: number;
 }

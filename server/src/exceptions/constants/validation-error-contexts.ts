@@ -92,6 +92,10 @@ export const VALIDATION_ERROR_CONTEXT = {
     errorCode: 10404,
     message: 'Position name length should be less than 50 symbols',
   },
+  POSITION_ID_IS_NOT_INT: {
+    errorCode: 10405,
+    message: 'Position id should be int',
+  },
 } as const;
 
 validateErrorContexts(VALIDATION_ERROR_CONTEXT, 'Validation');
