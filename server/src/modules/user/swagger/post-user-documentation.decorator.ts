@@ -86,6 +86,7 @@ export function PostUserAPIDocumentation(): MethodDecorator {
 export const validUserBodyExample: Omit<CreateUserDto, 'photo'> = {
   email: 'test.email@gmail.com',
   name: 'Harry',
+  positionId: 1,
   phone: '+380936548653',
   password: 'akcio',
 };

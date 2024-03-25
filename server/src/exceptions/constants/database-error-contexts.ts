@@ -32,6 +32,28 @@ export const DATABASE_ERROR_CONTEXT = {
     errorCode: 20106,
     message: 'Delete user entity exception',
   },
+
+  // Position
+  POSITION_CREATE_ONE: {
+    errorCode: 20201,
+    message: 'Create Position entity exception',
+  },
+  POSITION_GET_ONE: {
+    errorCode: 20202,
+    message: 'Select one Position entity exception',
+  },
+  POSITION_GET_MANY: {
+    errorCode: 20204,
+    message: 'Select many Position entities exception',
+  },
+  POSITION_UPDATE_ONE: {
+    errorCode: 20205,
+    message: 'Update Position entity exception',
+  },
+  POSITION_DELETE_ONE: {
+    errorCode: 20206,
+    message: 'Delete Position entity exception',
+  },
 };
 
 validateErrorContexts(DATABASE_ERROR_CONTEXT, 'Database');

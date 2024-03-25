@@ -45,5 +45,6 @@ export function UpdateUserAPIDocumentation(): MethodDecorator {
 
 const validUserResponse: UpdateUserDto = {
   name: 'Jesse',
+  positionId: 2,
   phone: '+380936548653',
 };

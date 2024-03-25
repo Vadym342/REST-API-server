@@ -1,4 +1,14 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Position } from '@modules/position/entities/position.entity';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity({
   name: 'users',
@@ -8,6 +18,13 @@ export class User {
     name: 'id',
   })
   id: string;
+
+  @Column({
+    name: 'position_id',
+    type: 'int',
+    nullable: false,
+  })
+  positionId: number;
 
   @Column({
     name: 'email',
@@ -67,4 +84,10 @@ export class User {
     nullable: true,
   })
   deletedDate: Date | null;
+
+  @ManyToOne(() => Position, (position) => position.users)
+  @JoinColumn({
+    name: 'position_id',
+  })
+  position: Position;
 }

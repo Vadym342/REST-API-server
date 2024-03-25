@@ -41,6 +41,7 @@ import { GetUserAPIDocumentation } from './swagger/get-one-user-documentation.de
 import { GetUserListAPIDocumentation } from './swagger/get-user-list-documentation.decorator';
 import { PostUserAPIDocumentation } from './swagger/post-user-documentation.decorator';
 import { UpdateUserAPIDocumentation } from './swagger/update-user-documentation.decorator';
+import { PositionValidatorService } from '@modules/position/services/position-validator.service';
 
 @ApiTags('User')
 @Controller('user')
@@ -50,6 +51,7 @@ export class UserController {
     private readonly userService: UserService,
     private readonly userFileService: UserFileService,
     private readonly userValidatorService: UserValidatorService,
+    private readonly positionValidatorService: PositionValidatorService,
   ) {}
 
   @Post()
@@ -83,6 +85,7 @@ export class UserController {
 
     createUserDto.photo = fileName;
 
+    await this.positionValidatorService.doesPositionExist(createUserDto.positionId);
     await this.userValidatorService.doesUserAlreadyCreated(createUserDto.email);
 
     return this.userService.createUser(createUserDto);

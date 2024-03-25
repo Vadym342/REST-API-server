@@ -52,6 +52,10 @@ export const VALIDATION_ERROR_CONTEXT = {
     errorCode: 10213,
     message: 'User photo should be a string',
   },
+  USER_POSITION_ID_IS_NOT_INT: {
+    errorCode: 10214,
+    message: 'User position id should be a int',
+  },
 
   // FILE
   FILE_UPLOAD_PHOTO_PIPE_NO_FILE: {
@@ -69,6 +73,24 @@ export const VALIDATION_ERROR_CONTEXT = {
   FILE_UPLOAD_PHOTO_SAVING_ERROR: {
     errorCode: 10304,
     message: 'File count not be saved',
+  },
+
+  // Position
+  POSITION_ENTITY_NOT_FOUND: {
+    errorCode: 10401,
+    message: 'Position not found',
+  },
+  POSITION_ENTITY_ALREADY_EXIST: {
+    errorCode: 10402,
+    message: 'Position already exist',
+  },
+  POSITION_NAME_IS_NOT_STRING: {
+    errorCode: 10403,
+    message: 'Position name should be a string',
+  },
+  POSITION_NAME_LENGTH_INVALID: {
+    errorCode: 10404,
+    message: 'Position name length should be less than 50 symbols',
   },
 } as const;
 

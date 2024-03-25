@@ -1,12 +1,17 @@
-import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
+import { IsEmail, IsInt, IsString, MaxLength, MinLength } from 'class-validator';
 
 import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
+import { Transform } from 'class-transformer';
 
 export class CreateUserDto {
   @IsEmail()
   @MaxLength(96, { context: VALIDATION_ERROR_CONTEXT.USER_EMAIL_LENGTH_INVALID })
   @IsString({ context: VALIDATION_ERROR_CONTEXT.USER_EMAIL_IS_NOT_STRING })
   email: string;
+
+  @Transform(({ value }) => Number(value))
+  @IsInt({ context: VALIDATION_ERROR_CONTEXT.USER_POSITION_ID_IS_NOT_INT })
+  positionId: number;
 
   @MaxLength(60, { context: VALIDATION_ERROR_CONTEXT.USER_NAME_LENGTH_INVALID })
   @MinLength(2, { context: VALIDATION_ERROR_CONTEXT.USER_NAME_LENGTH_INVALID })
