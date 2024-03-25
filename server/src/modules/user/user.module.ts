@@ -7,11 +7,13 @@ import { UserValidatorService } from './services/user-validator.service';
 import { UserService } from './services/user.service';
 import { UserController } from './user.controller';
 import { UserRepository } from './user.repository';
+import { Position } from '@modules/position/entities/position.entity';
+import { PositionValidatorService } from '@modules/position/services/position-validator.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([User, Position])],
   controllers: [UserController],
-  providers: [UserService, UserFileService, UserValidatorService, UserRepository],
+  providers: [UserService, UserFileService, UserValidatorService, UserRepository, PositionValidatorService],
   exports: [UserService],
 })
 export class UserModule {}

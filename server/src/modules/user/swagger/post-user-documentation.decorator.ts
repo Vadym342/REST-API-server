@@ -7,7 +7,7 @@ import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
 import { CreateUserDto } from '../dto/create-user.dto';
 
 const {
-  USER_ENTITY_NOT_FOUND,
+  POSITION_ENTITY_NOT_FOUND,
   USER_ENTITY_ALREADY_EXIST,
   USER_NAME_IS_NOT_STRING,
   USER_NAME_LENGTH_INVALID,
@@ -51,7 +51,7 @@ export function PostUserAPIDocumentation(): MethodDecorator {
     }),
     ApiThrowExceptions({
       '404': {
-        errors: [USER_ENTITY_NOT_FOUND],
+        errors: [POSITION_ENTITY_NOT_FOUND],
         description: 'Please, make sure that input data are correct',
       },
     }),
@@ -86,6 +86,7 @@ export function PostUserAPIDocumentation(): MethodDecorator {
 export const validUserBodyExample: Omit<CreateUserDto, 'photo'> = {
   email: 'test.email@gmail.com',
   name: 'Harry',
+  positionId: 1,
   phone: '+380936548653',
   password: 'akcio',
 };

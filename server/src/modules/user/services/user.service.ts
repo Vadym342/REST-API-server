@@ -24,6 +24,7 @@ export class UserService {
       await this.userEntityRepository.createOne({
         email: data.email,
         name: data.name,
+        positionId: data.positionId,
         phone: data.phone,
         photo: data.photo,
         password: hashedPassword,
@@ -58,6 +59,7 @@ export class UserService {
 
     return await this.userEntityRepository.updateOne(id, {
       name: data.name,
+      positionId: data.positionId,
       phone: data.phone,
     });
   }
