@@ -18,7 +18,8 @@ export class CreateUserDto {
   @IsString({ context: VALIDATION_ERROR_CONTEXT.USER_NAME_IS_NOT_STRING })
   name: string;
 
-  @MaxLength(13, { context: VALIDATION_ERROR_CONTEXT.USER_PHONE_INVALID })
+  @MaxLength(13, { context: VALIDATION_ERROR_CONTEXT.USER_PHONE_LENGTH_INVALID })
+  @MinLength(13, { context: VALIDATION_ERROR_CONTEXT.USER_PHONE_LENGTH_INVALID })
   @IsString({ context: VALIDATION_ERROR_CONTEXT.USER_PHONE_INVALID })
   phone: string;
 

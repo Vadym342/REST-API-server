@@ -70,6 +70,10 @@ export const VALIDATION_ERROR_CONTEXT = {
     errorCode: 10214,
     message: 'User position id should be a int',
   },
+  USER_PHONE_LENGTH_INVALID: {
+    errorCode: 10215,
+    message: 'User phone length should be 13 symbols in format "+380936647534"',
+  },
 
   // FILE
   FILE_UPLOAD_PHOTO_PIPE_NO_FILE: {
