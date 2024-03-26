@@ -5,7 +5,7 @@ import { User } from '@modules/user/entities/user.entity';
 
 type NodeEnvType = 'development' | 'test';
 
-const serverImage = '1711384400250-Image.jpeg'; //static server image
+export const serverImage = '1711384400250-Image.jpeg'; //static server image
 
 function createRandomUser(): User {
   return {
@@ -51,3 +51,4 @@ export const entityUsers: Record<NodeEnvType, Partial<User>[]> = {
 };
 
 entityPositions.test = entityPositions.development;
+entityUsers.test = entityUsers.development;
