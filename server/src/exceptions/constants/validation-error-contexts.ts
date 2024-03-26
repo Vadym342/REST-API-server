@@ -7,6 +7,20 @@ export const VALIDATION_ERROR_CONTEXT = {
     message: 'Validation error happened',
   },
 
+  // Auth JWT
+  AUTH_JWT_UNAUTHORIZED: {
+    errorCode: 10101,
+    message: 'User is not authorized',
+  },
+  AUTH_JWT_AUTH_HEADER_REQUIRED: {
+    errorCode: 10102,
+    message: 'Auth header required',
+  },
+  AUTH_JWT_AUTH_ACCESS_DENIED: {
+    errorCode: 10103,
+    message: 'Access denied',
+  },
+
   // User
   USER_ENTITY_NOT_FOUND: {
     errorCode: 10201,
