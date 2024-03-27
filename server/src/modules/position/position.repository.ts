@@ -44,6 +44,7 @@ export class PositionRepository extends Repository<Position> {
       const take = 10; //Change to Option from params
       const [data, total] = await this.findAndCount({
         select: {
+          id: true,
           name: true,
         },
         take,
