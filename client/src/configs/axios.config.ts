@@ -21,3 +21,9 @@ export const axiosFormDataConfig = axios.create({
     Authorization: `Bearer ` + getInfoFromLocalStorage("token"),
   },
 });
+
+export const axiosGetPhotoConfig = axios.create({
+  baseURL: process.env.SERVER_URL || "http://localhost:8081/",
+  method: "GET",
+  responseType: "blob", // important
+});
