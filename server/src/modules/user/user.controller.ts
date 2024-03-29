@@ -16,6 +16,7 @@ import {
   FileTypeValidator,
   Res,
   UnprocessableEntityException,
+  Query,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiTags } from '@nestjs/swagger';
@@ -30,6 +31,7 @@ import { PositionValidatorService } from '@modules/position/services/position-va
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { GetUserResponseType } from './dto/get-one-user.response.dto';
+import { GetListUsersDto } from './dto/get-user-list.dto';
 import { GetUserListResponseDto } from './dto/get-user-list.response.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEmailParamDto } from './dto/user-email-param.dto';
@@ -99,10 +101,10 @@ export class UserController {
 
   @Get()
   @GetUserListAPIDocumentation()
-  async getAllUsers(): Promise<GetUserListResponseDto> {
+  async getAllUsers(@Query() query: GetListUsersDto): Promise<GetUserListResponseDto> {
     this.logger.log('Getting all Users');
 
-    return this.userService.getAllUsers();
+    return this.userService.getAllUsers(query);
   }
 
   @Get(':email')

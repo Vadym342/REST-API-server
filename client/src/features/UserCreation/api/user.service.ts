@@ -1,6 +1,7 @@
 import {
   axiosConfig,
   axiosFormDataConfig,
+  axiosGetPhotoConfig,
 } from "../../../configs/axios.config";
 import { ErrorContextType } from "../../../shared/types/common.types";
 import { UpdateUserDataType, UserDataType } from "../types/user.types";
@@ -22,6 +23,17 @@ export const UserService = {
       return data;
     }
   },
+
+  async getUserPhoto(filename: string) {
+    const { data } = await axiosGetPhotoConfig.get(
+      `/user/user-photo/${filename}`
+    );
+
+    if (data) {
+      return data;
+    }
+  },
+
   async getAllUsers() {
     const { data } = await axiosConfig.get("user");
     if (data) {

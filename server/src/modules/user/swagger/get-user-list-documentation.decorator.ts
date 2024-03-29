@@ -64,10 +64,28 @@ export class UserResponse {
 
 export class GetUserListResponse {
   @ApiProperty({
+    example: 5,
+    type: 'integer',
+  })
+  count: number;
+
+  @ApiProperty({
     example: 1,
     type: 'integer',
   })
-  total: number;
+  page: number;
+
+  @ApiProperty({
+    example: 1,
+    type: 'integer',
+  })
+  totalPages: number;
+
+  @ApiProperty({
+    example: 2,
+    type: 'integer',
+  })
+  totalUsers: number;
 
   @ApiProperty({
     type: () => [UserResponse],
@@ -75,7 +93,10 @@ export class GetUserListResponse {
   data: UserResponse[];
 }
 export const validUserListResponse: GetUserListResponse = {
-  total: 2,
+  count: 5,
+  page: 1,
+  totalPages: 1,
+  totalUsers: 2,
   data: [
     {
       id: 'df467ffb-0a63-404c-92f9-b5b52108061f',

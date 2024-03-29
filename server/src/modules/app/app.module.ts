@@ -28,6 +28,7 @@ export class AppModule {
       .exclude(
         { path: 'user', method: RequestMethod.POST },
         { path: 'user', method: RequestMethod.GET },
+        { path: 'user/user-photo/:photo', method: RequestMethod.GET },
         { path: 'position', method: RequestMethod.GET },
       )
       .forRoutes(UserController, PositionController);
