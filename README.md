@@ -1,3 +1,7 @@
+TO DO :
+Add images to S3 bucket 
+Deploy to hosting
+
 Update your .env file 
 
 Node version is `v20.10.0`
