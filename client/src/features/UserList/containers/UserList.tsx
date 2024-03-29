@@ -104,7 +104,7 @@ export const UserList: FC = () => {
                 <div className="flex-shrink-0">
                   <img
                     className="w-8 h-8 rounded-full"
-                    src={user?.photo ? user.photo : ""}
+                    src={user?.photo}
                     alt={user?.name}
                   />
                 </div>
