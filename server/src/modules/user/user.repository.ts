@@ -4,6 +4,9 @@ import { Repository } from 'typeorm';
 
 import { DATABASE_ERROR_CONTEXT, DatabaseException } from '@src/exceptions';
 
+import { Position } from '@modules/position/entities/position.entity';
+
+import { GetListUsersOptions, SORT_ORDER } from './constants/user.types';
 import { CreateUserDto } from './dto/create-user.dto';
 import { GetUserResponseType } from './dto/get-one-user.response.dto';
 import { GetUserListResponseDto } from './dto/get-user-list.response.dto';
@@ -53,19 +56,28 @@ export class UserRepository extends Repository<User> {
     }
   }
 
-  async getAll(): Promise<GetUserListResponseDto> {
+  async getAll(options: GetListUsersOptions): Promise<GetUserListResponseDto> {
     try {
-      const query = this.createQueryBuilder('u').select([
-        'u.id AS "id"',
-        'u.email AS "email"',
-        'u.phone AS "phone"',
-        'u.name AS "name"',
-        'u.photo AS "photo"',
-      ]);
+      const { count = 10, offset = 0, sortDirection = SORT_ORDER.DESC, page } = options;
 
-      const [data, total] = await Promise.all([query.getRawMany(), query.getCount()]);
+      const query = this.createQueryBuilder('u')
+        .select([
+          'u.id AS "id"',
+          'u.email AS "email"',
+          'u.phone AS "phone"',
+          'u.name AS "name"',
+          'u.photo AS "photo"',
+          'p.id AS "positionId"',
+          'p.name AS "position"',
+        ])
+        .leftJoin(Position, 'p', 'u.position_id = p.id')
+        .limit(count)
+        .offset(page ? page * count : offset)
+        .orderBy('u.created_date', sortDirection);
 
-      return { total, data };
+      const [data, totalUsers] = await Promise.all([query.getRawMany(), query.getCount()]);
+
+      return { page, count, totalPages: Math.ceil(totalUsers / count), totalUsers, data };
     } catch (error) {
       this.logger.log('Selecting User exception', error);
 

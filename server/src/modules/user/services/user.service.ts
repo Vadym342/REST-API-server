@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt';
 
 import { DATABASE_ERROR_CONTEXT, ValidationException } from '@src/exceptions';
 
+import { GetListUsersOptions } from '../constants/user.types';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { GetUserResponseType } from '../dto/get-one-user.response.dto';
 import { GetUserListResponseDto } from '../dto/get-user-list.response.dto';
@@ -48,10 +49,10 @@ export class UserService {
     return await this.userEntityRepository.getAuth(email);
   }
 
-  async getAllUsers(): Promise<GetUserListResponseDto> {
+  async getAllUsers(options: GetListUsersOptions): Promise<GetUserListResponseDto> {
     this.logger.log('Getting User List');
 
-    return await this.userEntityRepository.getAll();
+    return await this.userEntityRepository.getAll(options);
   }
 
   async updateUser(id: string, data: UpdateUserDto): Promise<void> {

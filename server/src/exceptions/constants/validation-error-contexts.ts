@@ -7,6 +7,24 @@ export const VALIDATION_ERROR_CONTEXT = {
     message: 'Validation error happened',
   },
 
+  // COMMON
+  PAGINATION_COUNT_IS_INVALID: {
+    errorCode: 10001,
+    message: 'Count param should be an integer grater or equal 1',
+  },
+  PAGINATION_OFFSET_IS_INVALID: {
+    errorCode: 10002,
+    message: 'Offset param should be positive integer',
+  },
+  SORTING_DIRECTION_IS_NOT_IN_RANGE: {
+    errorCode: 10003,
+    message: 'Sort direction param should be one of: ASC, DESC',
+  },
+  PAGINATION_PAGE_IS_INVALID: {
+    errorCode: 10004,
+    message: 'Page param should be an integer grater or equal 1',
+  },
+
   // Auth JWT
   AUTH_JWT_UNAUTHORIZED: {
     errorCode: 10101,

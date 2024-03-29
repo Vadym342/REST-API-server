@@ -7,14 +7,26 @@ export class UserListType {
   @ApiProperty({ example: 'test@gmail.com' })
   email: string;
 
+  @ApiProperty({ example: '1' })
+  positionId: number;
+
+  @ApiProperty({ example: 'Security' })
+  position: string;
+
   @ApiProperty({ example: 'Harry' })
   name: string;
 
   @ApiProperty({ example: '+380936548653' })
   phone: string;
+
+  @ApiProperty({ example: '+1711384400250-Image.jpeg' })
+  photo: string;
 }
 
 export class GetUserListResponseDto {
-  total: number;
+  count: number;
+  page: number;
+  totalPages: number;
+  totalUsers: number;
   data: UserListType[];
 }
