@@ -1,10 +1,11 @@
 import { accessSync } from 'fs';
-import { parse, join } from 'path';
+import { join, extname } from 'path';
 
 import { Injectable, Logger, UnprocessableEntityException } from '@nestjs/common';
 import type { Response } from 'express';
 import { Observable, of } from 'rxjs';
 import * as sharp from 'sharp';
+import { v4 as uuid } from 'uuid';
 
 import { pathToSave } from '@src/constants/constants';
 import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
@@ -13,12 +14,9 @@ import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
 export class UserFileService {
   private readonly logger = new Logger(UserFileService.name);
   async uploadUserPhoto(file: Express.Multer.File): Promise<string> {
-    // S3 bucket
     try {
       accessSync(pathToSave);
-      const imageType = file.mimetype.split('/')[1];
-      const originalName = parse(file.originalname).name;
-      const filename = Date.now() + '-' + originalName + `.${imageType}`;
+      const filename = `${uuid()}${extname(file.originalname)}`;
 
       await sharp(file.buffer)
         .jpeg({ quality: 70 })

@@ -132,6 +132,16 @@ export const VALIDATION_ERROR_CONTEXT = {
     errorCode: 10405,
     message: 'Position id should be int',
   },
+
+  // File S3 Bucket
+  S3_FILE_UPLOAD_ERROR: {
+    errorCode: 10501,
+    message: 'Problem with file uploading to s3 bucket',
+  },
+  S3_FILE_UPLOAD_PHOTO_ERROR: {
+    errorCode: 10502,
+    message: 'Problem with file uploading',
+  },
 } as const;
 
 validateErrorContexts(VALIDATION_ERROR_CONTEXT, 'Validation');
