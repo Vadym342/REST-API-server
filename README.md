@@ -1,6 +1,6 @@
 TO DO:
-Add images to S3 bucket.
 Deploy to hosting.
+Husky.
 
 Update your .env file 
 
