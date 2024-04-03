@@ -1,9 +1,11 @@
 import { ClassSerializerInterceptor } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { config as s3Bucket } from 'aws-sdk';
 import { config } from 'dotenv';
 import { Logger } from 'nestjs-pino';
 
+import { s3BucketConfig } from './configs/s3-bucket.config';
 import { globalExceptionFilters } from './exceptions';
 import { AppModule } from './modules/app/app.module';
 import { globalValidationPipe } from './pipe/global-validation.pipe';
@@ -15,6 +17,7 @@ async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, { bufferLogs: true });
 
   useSwagger(app);
+  s3Bucket.update(s3BucketConfig);
   app.useLogger(app.get(Logger));
   app.useGlobalPipes(globalValidationPipe);
   app.useGlobalFilters(...globalExceptionFilters);

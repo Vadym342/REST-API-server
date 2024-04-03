@@ -6,6 +6,7 @@ import { AuthMiddleware } from '@src/middleware/auth.middleware';
 
 import { AuthModule } from '@modules/auth/auth.module';
 import { AuthService } from '@modules/auth/auth.service';
+import { FileManagerModule } from '@modules/file-manager/file-manager.module';
 import { PositionController } from '@modules/position/position.controller';
 import { PositionModule } from '@modules/position/position.module';
 import { UserController } from '@modules/user/user.controller';
@@ -17,7 +18,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), CommonModule.forRoot(), UserModule, PositionModule, AuthModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    CommonModule.forRoot(),
+    UserModule,
+    PositionModule,
+    AuthModule,
+    FileManagerModule,
+  ],
   controllers: [AppController],
   providers: [AppService, AuthService, JwtService],
 })

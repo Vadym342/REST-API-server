@@ -5,7 +5,7 @@ import { User } from '@modules/user/entities/user.entity';
 
 type NodeEnvType = 'development' | 'test';
 
-export const serverImage = '1711384400250-Image.jpeg'; //static server image
+export const serverImage = '5d348311-a99d-4b41-be07-a42c9756e3b0.jpg'; //static server image
 
 function createRandomUser(): User {
   return {

@@ -58,7 +58,7 @@ export class UserRepository extends Repository<User> {
 
   async getAll(options: GetListUsersOptions): Promise<GetUserListResponseDto> {
     try {
-      const { count = 10, offset = 0, sortDirection = SORT_ORDER.DESC, page } = options;
+      const { count, offset = 0, sortDirection = SORT_ORDER.DESC, page } = options;
 
       const query = this.createQueryBuilder('u')
         .select([

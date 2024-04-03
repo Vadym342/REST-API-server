@@ -1,30 +1,28 @@
 import { accessSync } from 'fs';
-import { parse, join } from 'path';
+import { join, extname } from 'path';
 
 import { Injectable, Logger, UnprocessableEntityException } from '@nestjs/common';
 import type { Response } from 'express';
 import { Observable, of } from 'rxjs';
 import * as sharp from 'sharp';
+import { v4 as uuid } from 'uuid';
 
-import { pathToSave } from '@src/constants/constants';
+import { PHOTO_HEIGHT, PHOTO_WIDTH, pathToSave } from '@src/constants/constants';
 import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
 
 @Injectable()
 export class UserFileService {
   private readonly logger = new Logger(UserFileService.name);
-  async uploadUserPhoto(file: Express.Multer.File): Promise<string> {
-    // S3 bucket
+  async uploadUserPhotoLocal(file: Express.Multer.File): Promise<string> {
     try {
       accessSync(pathToSave);
-      const imageType = file.mimetype.split('/')[1];
-      const originalName = parse(file.originalname).name;
-      const filename = Date.now() + '-' + originalName + `.${imageType}`;
+      const filename = `${uuid()}${extname(file.originalname)}`;
 
       await sharp(file.buffer)
         .jpeg({ quality: 70 })
         .resize({
-          width: 70,
-          height: 70,
+          width: PHOTO_WIDTH,
+          height: PHOTO_HEIGHT,
           fit: 'fill',
         })
         .toFile(join(pathToSave, filename));
@@ -37,7 +35,7 @@ export class UserFileService {
     }
   }
 
-  async getUserPhoto(fileName: string, res: Response): Promise<Observable<void>> {
+  async getUserPhotoLocal(fileName: string, res: Response): Promise<Observable<void>> {
     return of(res.sendFile(join(process.cwd(), `${pathToSave}/` + fileName)));
   }
 }

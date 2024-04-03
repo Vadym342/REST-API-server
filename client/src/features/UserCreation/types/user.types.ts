@@ -1,6 +1,7 @@
 export type UserDataType = {
   email: string;
   name: string;
+  position: string;
   positionId: number;
   photo: any;
   phone: string;

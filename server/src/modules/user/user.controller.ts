@@ -1,3 +1,5 @@
+import { extname } from 'path';
+
 import {
   Body,
   Controller,
@@ -21,12 +23,14 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiTags } from '@nestjs/swagger';
 import type { Response } from 'express';
-import * as multer from 'multer';
+import { diskStorage } from 'multer';
 import { Observable } from 'rxjs';
+import { v4 as uuid } from 'uuid';
 
 import { PHOTO_IMPORT_MAX_FILE_SIZE_BYTES } from '@src/constants/constants';
 import { VALIDATION_ERROR_CONTEXT } from '@src/exceptions';
 
+import { FileManagerService } from '@modules/file-manager/file-manager.service';
 import { PositionValidatorService } from '@modules/position/services/position-validator.service';
 
 import { CreateUserDto } from './dto/create-user.dto';
@@ -55,14 +59,19 @@ export class UserController {
     private readonly userFileService: UserFileService,
     private readonly userValidatorService: UserValidatorService,
     private readonly positionValidatorService: PositionValidatorService,
+    private readonly fileManagerService: FileManagerService,
   ) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @UseInterceptors(
     FileInterceptor('photo', {
-      storage: multer.memoryStorage(),
-      limits: { files: 1, fieldSize: PHOTO_IMPORT_MAX_FILE_SIZE_BYTES },
+      storage: diskStorage({
+        destination: './uploads',
+        filename: (req: any, file: any, cb: any) => {
+          cb(null, `${uuid()}${extname(file.originalname)}`);
+        },
+      }),
     }),
   )
   @PostUserAPIDocumentation()
@@ -80,7 +89,7 @@ export class UserController {
   ): Promise<void> {
     this.logger.log('Creating User');
 
-    const fileName = await this.userFileService.uploadUserPhoto(photo);
+    const fileName = await this.fileManagerService.uploadFileToS3(photo.path, photo.filename, photo.mimetype);
 
     if (!fileName) {
       throw new UnprocessableEntityException(VALIDATION_ERROR_CONTEXT.FILE_UPLOAD_PHOTO_SAVING_ERROR);
@@ -94,9 +103,9 @@ export class UserController {
     return this.userService.createUser(createUserDto);
   }
 
-  @Get('user-photo/:photo')
+  @Get('user-photo-local/:photo')
   async getUserPhoto(@Param() { photo }: UserPhotoParamDto, @Res() res: Response): Promise<Observable<void>> {
-    return this.userFileService.getUserPhoto(photo, res);
+    return this.userFileService.getUserPhotoLocal(photo, res);
   }
 
   @Get()
