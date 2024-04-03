@@ -142,6 +142,14 @@ export const VALIDATION_ERROR_CONTEXT = {
     errorCode: 10502,
     message: 'Problem with file uploading',
   },
+  S3_DELETE_FILE_ERROR: {
+    errorCode: 10503,
+    message: 'Problem with file deletion',
+  },
+  S3_GET_FILE_ERROR: {
+    errorCode: 10504,
+    message: 'Problem with file selection',
+  },
 } as const;
 
 validateErrorContexts(VALIDATION_ERROR_CONTEXT, 'Validation');

@@ -7,7 +7,7 @@ import { ErrorContextType } from "../../../shared/types/common.types";
 import { UpdateUserDataType, UserDataType } from "../types/user.types";
 
 export const UserService = {
-  async createUser(userData: UserDataType) {
+  async createUser(userData: Omit<UserDataType, "position">) {
     const data = await axiosFormDataConfig
       .post<number | ErrorContextType>("user", userData)
       .catch((error) => {

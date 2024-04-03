@@ -76,7 +76,9 @@ export const CreateUserForm: FC = () => {
     }
   };
 
-  const onSubmit: SubmitHandler<IFormInput> = async (data: UserDataType) => {
+  const onSubmit: SubmitHandler<IFormInput> = async (
+    data: Omit<UserDataType, "position">
+  ) => {
     try {
       const response = await UserService.createUser({
         ...data,

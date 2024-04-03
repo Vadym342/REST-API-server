@@ -21,7 +21,7 @@ export class FileManagerController {
       }),
     }),
   )
-  async uploadFile(@UploadedFile() file: Express.Multer.File): Promise<string> {
-    return this.fileManagerService.uploadFile(file.path, file.filename, file.mimetype);
+  async uploadFileToS3(@UploadedFile() file: Express.Multer.File): Promise<string> {
+    return this.fileManagerService.uploadFileToS3(file.path, file.filename, file.mimetype);
   }
 }
