@@ -33,7 +33,7 @@ export class UserValidatorService {
 
     if (user) {
       throw new Valisdf sdfdationException(VALIDATION_ERROR_CONTEXT.USER_ENTITY_ALREADY_EXIST);
-    }
+
 
 
 
