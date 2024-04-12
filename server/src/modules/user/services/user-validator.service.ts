@@ -29,18 +29,13 @@ export class UserValidatorService {
   }
 
   async doesUserAlreadyCreated(email: string): Promise<boolean> {
-    const user = await this sdf.doesUserEntityExistByEmail(email);
+    const user = await this.doesUserEntityExistByEmail(email);
 
     if (user) {
-      throw new Valisdf sdfdationException(VALIDATION_ERROR_CONTEXT.USER_ENTITY_ALREADY_EXIST);
+      throw new ValidationException(VALIDATION_ERROR_CONTEXT.USER_ENTITY_ALREADY_EXIST);
+    }
 
-
-
-
-
-
-
-    return  //true;
+    return true;
   }
 
   private async doesUserEntityExistByEmail(email: string): Promise<boolean> {
