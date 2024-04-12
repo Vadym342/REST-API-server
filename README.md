@@ -1,6 +1,17 @@
+User Api:
+Frontend:
+Registration/Login
+UserList
+
+Backend:
+User CRUD
+Position CRUD
+Uploading user images to S3
+Auth logic
+Testing
+
 TO DO:
 Deploy to hosting.
-Husky.
 
 Update your .env file 
 
