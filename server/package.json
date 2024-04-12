@@ -8,12 +8,15 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:fix": "npm run format -- --write",
+    "format:staged": "prettier --check",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint --ext .ts \"{src,test}/**/*.ts\"",
     "lint:fix": "npm run lint -- --fix",
+    "lint:staged": "eslint --ext .ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
@@ -26,7 +29,8 @@
     "db:schema:create": "ts-node -r tsconfig-paths/register ./scripts/db/createDBSchema.ts",
     "migration:rollback:latest": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js -d ./src/database/migrations.datasource.ts migration:revert",
     "migration:run:latest": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js -d ./src/database/migrations.datasource.ts migration:run",
-    "migration:rollback": "node node_modules/typeorm/cli.js migration:revert"
+    "migration:rollback": "node node_modules/typeorm/cli.js migration:revert",
+    "prepare": "cd .. && husky install server/.husky"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -41,6 +45,7 @@
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "commitlint": "^19.2.1",
     "dotenv": "^16.3.1",
     "eslint-plugin-unused-imports": "3.0.0",
     "nestjs-pino": "^4.0.0",
@@ -58,6 +63,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
     "@faker-js/faker": "^8.4.1",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
@@ -79,7 +85,9 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^27.6.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.0",
     "jest": "^29.5.0",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.0.0",
     "source-map-support": "^0.5.21",
     "supertest": "^6.3.3",
