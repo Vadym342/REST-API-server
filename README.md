@@ -1,14 +1,14 @@
-User Api:
+REST API.
 Frontend:
-Registration/Login
-UserList
+Registration/Login.
+UserList.
 
 Backend:
-User CRUD
-Position CRUD
-Uploading user images to S3
-Auth logic
-Testing
+User CRUD.
+Position CRUD.
+Uploading user images to S3.
+Auth logic.
+Testing.
 
 TO DO:
 Deploy to hosting.
